@@ -2,14 +2,12 @@ div#docs {
 	align-items: flex-start;
 	display: flex;
 	flex-flow: row nowrap;
-	height: 100%;
 	width: 100%;
 }
 
 ul.menuSections {
 	display:inline-block;
 	flex-grow: 0;
-	height: 100%;
 	list-style-type:none;
 	min-width: 0;
 	padding-inline-start: 0;
@@ -39,9 +37,34 @@ ul.menuPages li:before {
 	padding-right: 5px;
 }
 
+ul.menuPages li.selected:before {
+	content: "\07CB";
+}
+
+ul.menuPages li.selected {
+	font-weight: bold;
+}
+
 div.page {
 	display:inline-block;
 	flex-grow: 1;
-	height: 100%;
 	width: 400px;
+}
+
+ul.platforms {
+	background: #eeeeee;
+	border: 1px solid black;
+	display: inline-block;
+	list-style-type: none;
+	margin: 0 auto;
+	padding: 5px 10px;
+}
+
+ul.platforms li {
+	display: inline;
+	padding: 0 5px;
+}
+
+ul.platforms li.selected {
+	font-weight: bold;
 }
