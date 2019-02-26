@@ -1,0 +1,47 @@
+div#docs {
+	align-items: flex-start;
+	display: flex;
+	flex-flow: row nowrap;
+	height: 100%;
+	width: 100%;
+}
+
+ul.menuSections {
+	display:inline-block;
+	flex-grow: 0;
+	height: 100%;
+	list-style-type:none;
+	min-width: 0;
+	padding-inline-start: 0;
+	width: 200px;
+}
+
+ul.menuSections li {
+	list-style-type: none;
+}
+
+ul.menuSections li span {
+	font-weight: bolder;
+}
+
+ul.menuPages {
+	display:inline;
+	list-style-type:none;
+}
+
+ul.menuPages li {
+	list-style-type: none;
+	margin-left: 20px;
+}
+
+ul.menuPages li:before {
+	content: "-";
+	padding-right: 5px;
+}
+
+div.page {
+	display:inline-block;
+	flex-grow: 1;
+	height: 100%;
+	width: 400px;
+}
