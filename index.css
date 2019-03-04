@@ -68,3 +68,30 @@ ul.platforms li {
 ul.platforms li.selected {
 	font-weight: bold;
 }
+
+div.pagination {
+	align-items: flex-start;
+	display: flex;
+	flex-flow: row nowrap;
+	width: 100%;
+}
+
+div.pagination div.prevPage {
+	display: inline-block;
+	flex-grow: 1;
+	text-align: left;
+}
+
+div.pagination div.prevPage:before {
+	content: "< ";
+}
+
+div.pagination div.nextPage {
+	display: inline-block;
+	flex-grow: 1;
+	text-align: right;
+}
+
+div.pagination div.nextPage:after {
+	content: " >";
+}
