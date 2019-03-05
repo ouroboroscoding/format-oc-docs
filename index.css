@@ -1,3 +1,7 @@
+a {
+	text-decoration: none;
+}
+
 div#docs {
 	align-items: flex-start;
 	display: flex;
@@ -54,15 +58,17 @@ div.page {
 ul.platforms {
 	background: #eeeeee;
 	border: 1px solid black;
-	display: inline-block;
+	display: block;
+	font-family: sans-serif;
 	list-style-type: none;
 	margin: 0 auto;
 	padding: 5px 10px;
+	text-align: center;
 }
 
 ul.platforms li {
 	display: inline;
-	padding: 0 5px;
+	padding: 0 15px;
 }
 
 ul.platforms li.selected {
@@ -73,6 +79,7 @@ div.pagination {
 	align-items: flex-start;
 	display: flex;
 	flex-flow: row nowrap;
+	margin-top: 50px;
 	width: 100%;
 }
 
