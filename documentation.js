@@ -32,10 +32,10 @@ documentation = {
 			{"title": "Hashes", "key": "hash-json"},
 			{"title": "Options", "key": "option-json"},
 			{"title": "Parents & Trees", "key": "parent-json"}
-		]},
+		]}/*,
 		{"title": "Using the code", "items": [
 
-		]}
+		]}*/
 	],
 	"pages": {
 
@@ -356,12 +356,21 @@ documentation = {
 		"parent-json": {
 			"title": "Parent & Tree Format",
 			"sections": [
+				{"type": "title", "text": "Parents"},
 				{"type": "paragraph", "text": "Parents are how we bring defined key/value Nodes together. Parents are simply strings, the key, pointing to other nodes."},
 				{"type": "code", "code": "javascript", "text": '// Resolution\n{\n    "width": {"__type__": "uint"},\n    "height": {"__type__": "uint"}\n}\n\n// Decimal\n{\n    "digits": {"__array__": "duplicate", "__type__": "uint"},\n    "exponent": {"__type__": "uint"},\n    "sign": {"__type__": "bool"}\n}\n\n// File\n{\n    "filename": {"__type__": "string"},\n    "mime": {"__type__": "string"},\n    "size": {"__type__": "uint"},\n    "resolution": {\n        "__optional__": true,\n        "height": {"__type__": "uint"},\n        "width": {"__type__": "uint"}\n    }\n}'},
 				{"type": "paragraph", "text": "Parents allow for just type strings for straight forward types, so the above could all be written as:"},
 				{"type": "code", "code": "javascript", "text": '// Resolution\n{\n    "width": "uint",\n    "height": "uint"\n}\n\n// Decimal\n{\n    "digits": {"__array__": "duplicate", "__type__": "uint"},\n    "exponent": "uint",\n    "sign": "bool"\n}\n\n// File\n{\n    "filename": "string",\n    "mime": "string",\n    "size": "uint",\n    "resolution": {\n        "__optional__": true,\n        "height": "uint",\n        "width": "uint"\n    }\n}'},
 				{"type": "paragraph", "text": "Parents also allow for adding the __optional__ flag as is seen in the File example. Setting the optional parameter allows for a value to not be set and for the Parent to still be valid without it. For example, the following would still be a valid value even without the resolution key:"},
-				{"type": "code", "code": "javascript", "text": '{\n    "filename": "class_notes.doc",\n    "mime": "application/msword",\n    "size": 12456,\n}'}
+				{"type": "code", "code": "javascript", "text": '{\n    "filename": "class_notes.doc",\n    "mime": "application/msword",\n    "size": 12456,\n}'},
+				{"type": "paragraph", "text": "The optional flag can be added to any value that is a child of a parent."},
+				{"type": "code", "code": "javascript", "text": '// Optional Array of ints\n{\n    "__array__": "duplicate",\n    "__optional__": true,\n    "__type__": "int"\n}\n\n// Optional Hash of strings to MD5s\n{\n    "__hash__": "string",\n    "__optional__": true,\n    "__type__", "md5"\n}'},
+				{"type": "paragraph", "text": "If a value is optional it can be ommitted entirely, or it can be sent a NULL value, either will validate as correct"},
+
+				{"type": "title", "text": "Trees"},
+				{"type": "paragraph", "text": 'Trees are top level Parents. There are only two differences between a Tree and a Parent. One is that while a Parent and Tree can contain Parents, a Parent can not contain a Tree. Two is that a Tree requires the special paramter "__name__".'},
+				{"type": "paragraph", "text": 'The name parameter is useful for error messaging so that in the case of two definitions like the following, you will know "message.size" comes from the first, and not the second. Without a name the error will simply contain "size" and it might be hard to associate the error message with the correct field in the correct structure.'},
+				{"type": "code", "code": "javascript", "text": '// Message structure\n{\n    "__name__": "message",\n    "size": "uint"\n}\n\n// File structure\n{\n    "__name__": "file",\n    "size": "uint"\n}'}
 			]
 		},
 
