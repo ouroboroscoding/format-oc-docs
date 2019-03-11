@@ -1,2 +1,2 @@
 # format-oc-docs
-Documentation for FormatOC
+Documentation for FormatOC 1.5.0
