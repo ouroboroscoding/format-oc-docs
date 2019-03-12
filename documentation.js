@@ -464,10 +464,9 @@ documentation = {
 				{"type": "markdown", "text": 'In that particular case I have a personal library that abstracts some of the functionality of [RethinkDB](https://rethinkdb.com/), a great JSON document based database. By adding the special \\_\\_rethinkdb\\_\\_ field I can have my library load the FormatOC definition file and not only know exactly what fields are allowed in my document, in which table, but have the ability to clean those fields before storing them.'},
 				{"type": "paragraph", "text": 'You can access the special fields using the special method which all Nodes except OptionsNode have.'},
 				{"type": "code", "text": {
-					"javascript": 'var rethinkData = patientTree.special("rethinkdb", {});',
-					"python": 'rethinkData = patientTree.special("rethinkdb", {})'
-				}},
-				{"type": "paragraph", "text": 'The second argument to special is the default value in case the special field is not available in your Node, if it\'s not passsed, an unfound special field will return a NULL value.'}
+					"javascript": 'var rethinkData = patientTree.special("rethinkdb");',
+					"python": 'rethinkData = patientTree.special("rethinkdb")'
+				}}
 			]
 		},
 
