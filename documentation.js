@@ -1,6 +1,7 @@
 documentation = {
 	"platforms": [
 		{"key": "javascript", "title": "JavaScript"},
+		{"key": "php", "title": "PHP"},
 		{"key": "python", "title": "Python"}
 	],
 	"menu": [
@@ -63,16 +64,19 @@ documentation = {
 			"sections": [
 				{"type": "markdown", "text": {
 					"python": "The project can be downloaded or forked from [GitHub](https://github.com/ouroboroscoding/format-oc-python)",
+					"php": "The project can be downloaded or forked from [GitHub](https://github.com/ouroboroscoding/format-oc-php)",
 					"javascript": "The project can be downloaded or forked from [GitHub](https://github.com/ouroboroscoding/format-oc-javascript)"
 				}},
 				{"type": "title", "text": "Git SSH"},
 				{"type": "code", "code": "bash", "text": {
 					"python": "git clone git@github.com:ouroboroscoding/format-oc-python.git",
+					"php": "git clone git@github.com:ouroboroscoding/format-oc-php.git",
 					"javascript": "git clone git@github.com:ouroboroscoding/format-oc-javascript.git"
 				}},
 				{"type": "title", "text": "Git HTTP"},
 				{"type": "code", "code": "bash", "text": {
 					"python": "git clone https://github.com/ouroboroscoding/format-oc-python.git",
+					"php": "git clone https://github.com/ouroboroscoding/format-oc-php.git",
 					"javascript": "git clone https://github.com/ouroboroscoding/format-oc-javascript.git"
 				}}
 			]
@@ -88,16 +92,19 @@ documentation = {
 				{"type": "paragraph", "text": "FormatOC can be installed using the appropriate package manager for your language."},
 				{"type": "paragraph", "text": {
 					"python": "For Python, use the pip command",
+					"php": "Unfortunately For PHP every attempt I have made to signup for PEAR has failed, so it's best to just download the file from GitHub.",
 					"javascript": "For Javascript, use the npm command"
 				}},
 				{"type": "code", "code": "bash", "text": {
 					"python": "pip install format-oc",
+					"php": "wget https://raw.githubusercontent.com/ouroboroscoding/format-oc-php/master/FormatOC.php",
 					"javascript": "npm install format-oc"
 				}},
 				{"type": "title", "text": "Importing"},
 				{"type": "code", "text": {
-					"python": "# All\nimport FormatOC\n\n# Just Tree\nfrom FormatOC import Tree",
-					"javascript": "// ES5\nvar FormatOC = require('format-oc');\n\n// ES6\nimport FormatOC from 'format-oc';"
+					"python": '# All\nimport FormatOC\n\n# Just Tree\nfrom FormatOC import Tree',
+					"php": 'require "FormatOC.php"',
+					"javascript": '// ES5\nvar FormatOC = require("format-oc");\n\n// ES6\nimport FormatOC from "format-oc";'
 				}}
 			]
 		},
@@ -394,16 +401,19 @@ documentation = {
 				{"type": "paragraph", "text": 'For this example and all further pages in the "Using the code" section we will be working with a semi-complex tree for storing patient information in a practice/clinic. It does not contain every single type, and it lacks an example of the OptionsNode, but it should be sufficient to explain the basic uses of the library.'},
 				{"type": "code", "text": {
 					"javascript": 'var FormatOC = require("format-oc");\n\nvar patientTree = new FormatOC.Tree({\n  "__rethinkdb__": {\n    "db": "emr",\n    "changes": ["creator"],\n    "table": "patient"\n  },\n  "__name__":"Patient",\n  "_id": {"__type__": "uuid", "__optional__": true},\n  "_created": {"__type__": "timestamp"},\n  "profile_id": {"__type__": "uuid", "__optional__": true},\n  "name": {"__type__": "string", "__optional__": true},\n  "name_first": {"__type__": "string"},\n  "name_last": {"__type__": "string"},\n  "name_middle": {"__type__": "string", "__optional__": true},\n  "email": {"__type__": "string", "__optional__": true},\n  "gender": {"__type__": "string", "__options__": ["female", "male", "other"]},\n  "dob": {"__type__": "date"},\n  "locale":{"__type__": "string", "__regex__":"^[a-z]{2}-[A-Z]{2}$"},\n  "comm": {"__type__": "string", "__options__": ["phone", "sms", "email"]},\n  "phone_numbers": {\n    "__optional__": true,\n    "__array__": "unique",\n    "type": {"__type__": "string", "__options__": ["cell","home","work","fax"]},\n    "number": {"__type__": "string", "__regex__": "^\\+1\\d{10}$"},\n    "primary": {"__type__": "bool"}\n  },\n  "address": {\n    "__optional__": true,\n    "line1": {"__type__": "string"},\n    "line2": {"__type__": "string", "__optional__": true},\n    "city": {"__type__": "string"},\n    "division": {"__type__": "string", "__optional__": true},\n    "country": {"__type__": "string"},\n    "code": {"__type__": "string"}\n  },\n  "practices": {\n    "__hash__": "uuid",\n    "__type__": "uuid"\n  },\n  "gaurantors": {\n    "__optional__": true,\n    "__array__": "unique",\n    "__type__": "uuid"\n  }\n});',
+					"php": 'require "FormatOC.php"\n\n$patientTree = new FormatOC\\Tree(array(\n  "__rethinkdb__" => array(\n    "db" => "emr",\n    "changes" => array("creator"),\n    "table" => "patient"\n  ),\n  "__name__":"Patient",\n  "_id" => array("__type__" => "uuid", "__optional__" => true),\n  "_created" => array("__type__" => "timestamp"),\n  "profile_id" => array("__type__" => "uuid", "__optional__" => true),\n  "name" => array("__type__" => "string", "__optional__" => true),\n  "name_first" => array("__type__" => "string"),\n  "name_last" => array("__type__" => "string"),\n  "name_middle" => array("__type__" => "string", "__optional__" => true),\n  "email" => array("__type__" => "string", "__optional__" => true),\n  "gender" => array("__type__" => "string", "__options__" => array("female", "male", "other")),\n  "dob" => array("__type__" => "date"),\n  "locale" => array("__type__" => "string", "__regex__":"^[a-z]{2}-[A-Z]{2}$"),\n  "comm" => array("__type__" => "string", "__options__" => array("phone", "sms", "email")),\n  "phone_numbers" => array(\n    "__optional__" => true,\n    "__array__" => "unique",\n    "type" => array("__type__" => "string", "__options__" => array("cell","home","work","fax")),\n    "number" => array("__type__" => "string", "__regex__" => "^\\+1\\d{10}$"),\n    "primary" => array("__type__" => "bool")\n  ),\n  "address" => array(\n    "__optional__" => true,\n    "line1" => array("__type__" => "string"),\n    "line2" => array("__type__" => "string", "__optional__" => true),\n    "city" => array("__type__" => "string"),\n    "division" => array("__type__" => "string", "__optional__" => true),\n    "country" => array("__type__" => "string"),\n    "code" => array("__type__" => "string")\n  ),\n  "practices" => array(\n    "__hash__" => "uuid",\n    "__type__" => "uuid"\n  ),\n  "gaurantors" => array(\n    "__optional__" => true,\n    "__array__" => "unique",\n    "__type__" => "uuid"\n  )\n));',
 					"python": 'from FormatOC import Tree\n\npatientTree = Tree({\n  "__rethinkdb__": {\n    "db": "emr",\n    "changes": ["creator"],\n    "table": "patient"\n  },\n  "__name__":"Patient",\n  "_id": {"__type__": "uuid", "__optional__": True},\n  "_created": {"__type__": "timestamp"},\n  "profile_id": {"__type__": "uuid", "__optional__": True},\n  "name": {"__type__": "string", "__optional__": True},\n  "name_first": {"__type__": "string"},\n  "name_last": {"__type__": "string"},\n  "name_middle": {"__type__": "string", "__optional__": True},\n  "email": {"__type__": "string", "__optional__": True},\n  "gender": {"__type__": "string", "__options__": ["female", "male", "other"]},\n  "dob": {"__type__": "date"},\n  "locale":{"__type__": "string", "__regex__":"^[a-z]{2}-[A-Z]{2}$"},\n  "comm": {"__type__": "string", "__options__": ["phone", "sms", "email"]},\n  "phone_numbers": {\n    "__optional__": True,\n    "__array__": "unique",\n    "type": {"__type__": "string", "__options__": ["cell","home","work","fax"]},\n    "number": {"__type__": "string", "__regex__": "^\\+1\\d{10}$"},\n    "primary": {"__type__": "bool"}\n  },\n  "address": {\n    "__optional__": True,\n    "line1": {"__type__": "string"},\n    "line2": {"__type__": "string", "__optional__": True},\n    "city": {"__type__": "string"},\n    "division": {"__type__": "string", "__optional__": True},\n    "country": {"__type__": "string"},\n    "code": {"__type__": "string"}\n  },\n  "practices": {\n    "__hash__": "uuid",\n    "__type__": "uuid"\n  },\n  "gaurantors": {\n    "__optional__": True,\n    "__array__": "unique",\n    "__type__": "uuid"\n  }\n})'
 				}},
 				{"type": "paragraph", "text": 'Although it is trivial to create Node instances directly using the data appropriate for your programming language, the idea of FormatOC being written in several languages is the ability to share definition files across different platforms/languages in order to be able to verify validation at whatever stage in the process. After all, why wait until your Python microservice gets the data to validate it, when your in-browser Javascript code can validate it before any request is made to the backend. So instead of loading the data directly, consider storing your definitions as JSON files which can be changed in one place and loaded from several different applications.'},
 				{"type": "paragraph", "text": {
 					"javascript": "As the Javascript version of this library is primarily intended for use in-browser, I did not supply any file loading function. However this is trivial if you are using Node.js as you can see from the example below.",
+					"php": "In PHP you can accomplish this by using the fromFile method which every Node type (Node, ArrayNode, ParentNode, etc) provides. This method will load a file, parse the JSON into valid PHP data, and return a new instance for you.",
 					"python": "In Python you can accomplish this by using the fromFile method which every Node type (Node, ArrayNode, Parent, etc) provides. This method will load a file, parse the JSON into valid Python data, and return a new instance for you."
 				}},
 				{"type": "code", "text": {
-					"javascript": 'var fs = require("fs");\nvar FormatOC = require("format-oc");\n\nvar parentTree = FormatOC.Tree(\n  JSON.parse(\n    fs.readFileSync("definitions/patient.json", "utf8")\n  )\n);',
-					"python": 'from FormatOC import Tree\n\nparentTree = Tree.fromFile("definitions/patient.json")'
+					"javascript": 'var fs = require("fs");\nvar FormatOC = require("format-oc");\n\nvar patientTree = FormatOC.Tree(\n  JSON.parse(\n    fs.readFileSync("definitions/patient.json", "utf8")\n  )\n);',
+					"php": 'require "FormatOC.php";\n\n$patientTree = FormatOC\\Tree::fromFile("definitions/patient.json");',
+					"python": 'from FormatOC import Tree\n\npatientTree = Tree.fromFile("definitions/patient.json")'
 				}}
 			]
 		},
