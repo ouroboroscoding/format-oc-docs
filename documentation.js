@@ -29,6 +29,7 @@ documentation = {
 			{"title": "Nodes - Timestamp", "key": "node-json-timestamp"},
 			{"title": "Nodes - Unsigned Integer", "key": "node-json-uint"},
 			{"title": "Nodes - UUID", "key": "node-json-uuid"},
+			{"title": "Nodes - UUID4", "key": "node-json-uuid4"},
 			{"title": "Arrays", "key": "array-json"},
 			{"title": "Hashes", "key": "hash-json"},
 			{"title": "Options", "key": "option-json"},
@@ -311,11 +312,22 @@ documentation = {
 			"title": "Node Format: uuid",
 			"pagination": {
 				"prev": "node-json-uint",
-				"next": "array-json"
+				"next": "node-json-uuid4"
 			},
 			"sections": [
 				{"type": "markdown", "text": "[UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier) are universally unique IDs. Due to the nature of UUIDs, you can not use min/max with them."},
-				{"type": "code", "code": "javascript", "text": '// Any UUID\n{\n  "__type__": "uuid"\n}\n\n// A list of valid UUIDs\n{\n  "__type__": "md5",\n  "__options__": [\n    "52cd4b20-ca32-4433-9516-0c8684ec57c2",\n    "3b44c5ed-0fea-4478-9f1b-939ae6ec0721",\n    "6432b16a-7e27-47cd-8360-82d82ac70078"\n  ]\n}'},
+				{"type": "code", "code": "javascript", "text": '// Any UUID\n{\n  "__type__": "uuid"\n}\n\n// A list of valid UUIDs\n{\n  "__type__": "uuid",\n  "__options__": [\n    "52cd4b20-ca32-4433-9516-0c8684ec57c2",\n    "3b44c5ed-0fea-4478-9f1b-939ae6ec0721",\n    "6432b16a-7e27-47cd-8360-82d82ac70078"\n  ]\n}'},
+			]
+		},
+		"node-json-uuid4": {
+			"title": "Node Format: uuid4",
+			"pagination": {
+				"prev": "node-json-uuid",
+				"next": "array-json"
+			},
+			"sections": [
+				{"type": "markdown", "text": "Works the same as uuid, but limits to only v4. [UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier)."},
+				{"type": "code", "code": "javascript", "text": '// Any UUID4\n{\n  "__type__": "uuid4"\n}\n\n// A list of valid UUIDv4s\n{\n  "__type__": "uuid4",\n  "__options__": [\n    "52cd4b20-ca32-4433-9516-0c8684ec57c2",\n    "3b44c5ed-0fea-4478-9f1b-939ae6ec0721",\n    "6432b16a-7e27-47cd-8360-82d82ac70078"\n  ]\n}'},
 			]
 		},
 		"array-json": {
